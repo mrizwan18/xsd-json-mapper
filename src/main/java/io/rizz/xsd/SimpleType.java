@@ -1,22 +1,22 @@
 package io.rizz.xsd;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SimpleType {
-    String name;
-    String restrictionType;
     public ArrayList<String> enumeration = new ArrayList<String>();
-    public String   maxValue    = null;
-    public String   minValue    = null;
-    public String   length      = null;
-    public String   maxLength   = null;
-    public String   minLength   = null;
-    public String pattern     = null;
-    public String   totalDigits = null;
-    public String   fractionDigits = null;
-    public String   whiteSpace = null;
-    public String minInclusive=null;
+    public String maxValue = "";
+    public String minValue = "";
+    public String length = "";
+    public String maxLength = "";
+    public String minLength = "";
+    public String pattern = "";
+    public String totalDigits = "";
+    public String fractionDigits = "";
+    public String whiteSpace = "";
+    public String minInclusive = "";
+    String name="";
+    String restrictionType="";
+    String definition="";
 
     public SimpleType() {
     }
@@ -25,16 +25,16 @@ public class SimpleType {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getRestrictionType() {
         return restrictionType;
     }
 
     public void setRestrictionType(String restrictionType) {
         this.restrictionType = restrictionType;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public ArrayList<String> getEnumeration() {
@@ -117,30 +117,39 @@ public class SimpleType {
         this.whiteSpace = whiteSpace;
     }
 
-    @Override
-    public String toString() {
-        return "SimpleType{" +
-                "name='" + name + '\'' +
-                ", restrictionType='" + restrictionType + '\'' +
-                ", enumeration=" + enumeration.toString() +
-                ", maxValue='" + maxValue + '\'' +
-                ", minValue='" + minValue + '\'' +
-                ", length='" + length + '\'' +
-                ", maxLength='" + maxLength + '\'' +
-                ", minLength='" + minLength + '\'' +
-                ", pattern=" + pattern +
-                ", totalDigits='" + totalDigits + '\'' +
-                ", fractionDigits='" + fractionDigits + '\'' +
-                ", whiteSpace='" + whiteSpace + '\'' +
-                ", minInclusive='" + minInclusive + '\'' +
-                '}';
-    }
-
     public String getMinInclusive() {
         return minInclusive;
     }
 
     public void setMinInclusive(String minInclusive) {
         this.minInclusive = minInclusive;
+    }
+
+    public String getDefinition() {
+        return definition;
+    }
+
+    public void setDefinition(String definition) {
+        this.definition = definition;
+    }
+
+    @Override
+    public String toString() {
+        return "SimpleType{" +
+                "name='" + name + '\'' +
+                ", restrictionType='" + restrictionType + '\'' +
+                ", definition='" + definition + '\'' +
+                ", enumeration=" + enumeration +
+                ", maxValue='" + maxValue + '\'' +
+                ", minValue='" + minValue + '\'' +
+                ", length='" + length + '\'' +
+                ", maxLength='" + maxLength + '\'' +
+                ", minLength='" + minLength + '\'' +
+                ", pattern='" + pattern + '\'' +
+                ", totalDigits='" + totalDigits + '\'' +
+                ", fractionDigits='" + fractionDigits + '\'' +
+                ", whiteSpace='" + whiteSpace + '\'' +
+                ", minInclusive='" + minInclusive + '\'' +
+                '}';
     }
 }
