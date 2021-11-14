@@ -99,4 +99,11 @@ public class JsonObj {
                 ", enums=" + enums +
                 '}';
     }
+
+    public void toLowerCaseEnum(){
+        for(int i=0,l=enums.size();i<l;++i)
+        {
+            enums.set(i, enums.get(i).toLowerCase());
+        }
+    }
 }

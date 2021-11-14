@@ -3499,7 +3499,7 @@
       "type": "string"
     },
     "document_type6code": {
-      "description": "Document is a purchase order.",
+      "description": "Specifies a type of financial or commercial document.",
       "enum": [
         "MSIN",
         "CNFA",

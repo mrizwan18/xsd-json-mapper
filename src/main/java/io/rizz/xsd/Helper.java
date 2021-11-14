@@ -162,7 +162,10 @@ public class Helper {
         o.setMaxLength(fixNull(String.valueOf(obj.get("maxLength"))));
         o.setMinLength(fixNull(String.valueOf(obj.get("minLength"))));
         o.setMultipleOf(fixNull(String.valueOf(obj.get("multipleOf"))));
-        o.setEnums((ArrayList<String>) obj.get("enum"));
+        if(null!=obj.get("enum")) {
+            o.setEnums((ArrayList<String>) obj.get("enum"));
+            o.toLowerCaseEnum();
+        }
         list.put(o.getName(), o);
     }
 
@@ -229,8 +232,17 @@ public class Helper {
         return fixedStr;
     }
 
+    public static String fixEmptyNumber(String num){
+        String fixed=num;
+        if(num.equalsIgnoreCase(""))
+            fixed="0";
+        return fixed;
+    }
+
     public static boolean compareRestrictions(SimpleType xsdObj, JsonObj jsonObj){
         return xsdObj.getMaxLength().equalsIgnoreCase(jsonObj.getMaxLength()) &&
-                xsdObj.getMinLength().equalsIgnoreCase(jsonObj.getMinLength());
+                xsdObj.getMinLength().equalsIgnoreCase(jsonObj.getMinLength()) && xsdObj.getEnumeration().equals(jsonObj.getEnums()) &&
+        xsdObj.getFractionDigits().equalsIgnoreCase(jsonObj.getMultipleOf().substring(jsonObj.getMultipleOf().indexOf("-")+1)) &&
+                Integer.parseInt(fixEmptyNumber(xsdObj.getTotalDigits()))==jsonObj.getMaximum().replace(".","").length();
     }
 }
